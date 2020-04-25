@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Tracker</title>
+		<title>COVID19 Tracker</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<link rel="stylesheet" href="{% static 'bs/css/flatly.min.css' %}" />
 		<link rel="icon" type="image/x-icon" href="{% static 'virusicon.ico' %}">
@@ -12,11 +12,11 @@
 	</head>
 	<body onload="myFunction()" style="margin:0;" class="bg-dark">
 		<div class="col-sm-3">
-			<img src="{% static 'map.png' %}" alt="">
+			<img src="{% static 'map.png' %}" alt="Responsive image" class="img-fluid">
 		</div>
 		<div class="container col-sm-9">
-			<h1 class="bg-dark text-white name">Covid-19 Tracker in {{ country }}</h1>
-			<h3 class="bg-dark text-white">Mis A Jour : {{ today|date:"D d M Y" }} {{ today|time:"H:i" }}</h3>
+			<h1 class="bg-dark text-white name">Covid-19 Tracker For {{ country }}</h1>
+			<h3 class="bg-dark text-white">Mis a Jour : {{ today|date:"d/n/Y" }} {{ today|time:"H:i" }}</h3>
 			<button onclick="window.location.reload()" type="button" class="btn btn-info btn-lg btn-block">Cliquer ici pour actualiser les données</button> <br>
 			<div id="loader"></div>
 			<div style="display:none;" id="myDiv" class="container animate-bottom colored">
