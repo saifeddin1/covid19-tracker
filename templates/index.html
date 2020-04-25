@@ -7,103 +7,100 @@
 		<link rel="stylesheet" href="{% static 'bs/css/flatly.min.css' %}" />
 		<link rel="icon" type="image/x-icon" href="{% static 'virusicon.ico' %}">
 		<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="{% static 'bs/css/bootstrap.css' %}" />
 	</head>
 	<body onload="myFunction()" style="margin:0;" class="bg-dark">
 		<div class="col-sm-3">
 			<img src="{% static 'map.png' %}" alt="">
-			</div>
+		</div>
 		<div class="container col-sm-9">
 			<h1 class="bg-dark text-white name">Covid-19 Tracker in {{ country }}</h1>
-			<h3 class="bg-dark text-white">Actualités Pour: {{ today|date:"D d M Y" }} {{ today|time:"H:i" }}</h3>
+			<h3 class="bg-dark text-white">Mis A Jour : {{ today|date:"D d M Y" }} {{ today|time:"H:i" }}</h3>
 			<button onclick="window.location.reload()" type="button" class="btn btn-info btn-lg btn-block">Cliquer ici pour actualiser les données</button> <br>
 			<div id="loader"></div>
 			<div style="display:none;" id="myDiv" class="container animate-bottom colored">
 				
-<div class="row">
-	<div class="col-md-4">
-		<div class="col-md">
-			<div class="card text-center text-success bg-dark border border-success mb-3" id="total-orders">
-			  	
-			  	<div class="card-body">
-			  		<h5 class="card-title data">Noveau Rétablis :</h5>
-			    	<h3 class="card-title data">{{ newRecovered }}</h3>
-			  	</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="col-md">
+							<div class="card text-center text-success bg-dark border border-success mb-3" id="total-orders">
+								
+								<div class="card-body">
+									<h5 class="card-title data">Noveau Rétablis :</h5>
+									<h3 class="card-title data">{{ newRecovered }}</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="col-md">
+							<div class="card text-center text-success bg-dark border border-success mb-3" id="orders-delivered">
+								
+								<div class="card-body">
+									<h5 class="card-title data">Total Rétablis:</h5>
+									<h3 class="card-title data">{{ totalRecovered }}</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="col-md">
+							<div class="card text-center text-warning bg-dark border border-warning mb-3" id="orders-pending">
+								
+								<div class="card-body">
+									<h5 class="card-title data">Nouveaux Cas Confirmés:</h5>
+									<h3 class="card-title data">{{ newConfirmed }}</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="col-md">
+							<div class="card text-center text-warning bg-dark border border-warning mb-3" id="orders-pending">
+								
+								<div class="card-body">
+									<h5 class="card-title data">Total Des Cas Confirmés:</h5>
+									<h3 class="card-title data">{{ totalConfirmed }}</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="col-md">
+							<div class="card text-center text-danger bg-dark border border-danger mb-3" id="orders-pending">
+								
+								<div class="card-body">
+									<h5 class="card-title data">Noveaux Décès:</h5>
+									<h3 class="card-title data">{{ newDeaths }}</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="col-md">
+							<div class="card text-center text-danger bg-dark border border-danger mb-3" id="orders-pending">
+								
+								<div class="card-body">
+									<h5 class="card-title data">Décès Total:</h5>
+									<h3 class="card-title data">{{ totalDeaths }}</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--
+								<span class="data text-success">Noveau Rétablis :</span> <span class="data">{{ newRecovered }}</span> <br>
+								<span class="data text-success">Total Rétablis:</span><span class="data">{{ totalRecovered }}</span> <br>
+								<span class="data text-warning">Nouveaux Cas Confirmés: </span> <span class="data">{{ newConfirmed }}</span> <br>
+								<span class="data text-warning">Total Des Cas Confirmés: </span> <span class="data">{{ totalConfirmed }}</span> <br>
+								<span class="data text-danger">Noveaux Décès:</span> <span class="data">{{ newDeaths }}</span> <br>
+								<span class="data text-danger">Décès Total:</span> <span class="data">{{ totalDeaths }}</span> <br>
+				-->
 			</div>
 		</div>
-	</div>
 
-	<div class="col-md-4">
-		<div class="col-md">
-			<div class="card text-center text-success bg-dark border border-success mb-3" id="orders-delivered">
-			  	
-			  	<div class="card-body">
-			  		<h5 class="card-title data">Total Rétablis:</h5>
-			    	<h3 class="card-title data">{{ totalRecovered }}</h3>
-			  	</div>
-			</div>
-		</div>
-	</div>
 
-	<div class="col-md-4">
-		<div class="col-md">
-			<div class="card text-center text-warning bg-dark border border-warning mb-3" id="orders-pending">
-			  	
-			  	<div class="card-body">
-			  		<h5 class="card-title data">Nouveaux Cas Confirmés:</h5>
-			    	<h3 class="card-title data">{{ newConfirmed }}</h3>
-			  	</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4">
-		<div class="col-md">
-			<div class="card text-center text-warning bg-dark border border-warning mb-3" id="orders-pending">
-			  	
-			  	<div class="card-body">
-			  		<h5 class="card-title data">Total Des Cas Confirmés:</h5>
-			    	<h3 class="card-title data">{{ totalConfirmed }}</h3>
-			  	</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4">
-		<div class="col-md">
-			<div class="card text-center text-danger bg-dark border border-danger mb-3" id="orders-pending">
-			  	
-			  	<div class="card-body">
-			  		<h5 class="card-title data">Noveaux Décès:</h5>
-			    	<h3 class="card-title data">{{ newDeaths }}</h3>
-			  	</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4">
-		<div class="col-md">
-			<div class="card text-center text-danger bg-dark border border-danger mb-3" id="orders-pending">
-			  	
-			  	<div class="card-body">
-			  		<h5 class="card-title data">Décès Total:</h5>
-			    	<h3 class="card-title data">{{ totalDeaths }}</h3>
-			  	</div>
-			</div>
-		</div>
-	</div>
-
-</div>
-
-<!-- 
-				<span class="data text-success">Noveau Rétablis :</span> <span class="data">{{ newRecovered }}</span> <br>
-				<span class="data text-success">Total Rétablis:</span><span class="data">{{ totalRecovered }}</span> <br>
-				<span class="data text-warning">Nouveaux Cas Confirmés: </span> <span class="data">{{ newConfirmed }}</span> <br>
-				<span class="data text-warning">Total Des Cas Confirmés: </span> <span class="data">{{ totalConfirmed }}</span> <br>
-				<span class="data text-danger">Noveaux Décès:</span> <span class="data">{{ newDeaths }}</span> <br>
-				<span class="data text-danger">Décès Total:</span> <span class="data">{{ totalDeaths }}</span> <br>
- -->
-
-			</div>
-		</div>
 		<script src="{% static 'bs/css/bootstrap.min.js' %}"></script>
 		<script src="{% static 'bs/css/jquery-3.4.1.min.js' %}"></script>
 		<script>
@@ -116,5 +113,20 @@
 		document.getElementById("myDiv").style.display = "block";
 		}
 		</script>
+		<footer class="fixed-bottom row"> 
+			<div class="column text-white text-right m-5">
+				
+				<a target="_blank" href="http://www.facebook.com/saifeddin01"><i class="m-2 text-white fa fa-lg fa-facebook"></i></a>
+				<a target="_blank" href="https://www.instagram.com/sifo.io/"><i class="m-2 text-white fa fa-lg fa-instagram"></i></a>
+				<a target="_blank" href="https://github.com/saifeddin1"><i class="m-2 text-white fa fa-lg fa-github"></i></a>
+
+
+
+			</div>
+						<div class="column text-white text-left m-5">
+				Made with &hearts; By <a class="text-primary" href="https://www.sifoo.me">Saifeddin Matoui  </a> &copy; 2020 | #StaySafe #StayHome
+			</div>
+
+		</footer>
 	</body>
 </html>
