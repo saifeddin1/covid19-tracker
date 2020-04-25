@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tracker</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="{% static 'bs/css/flatly.min.css' %}" />
+		<link rel="icon" type="image/x-icon" href="{% static 'virusicon.ico' %}">
+		<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+		<link rel="stylesheet" href="{% static 'bs/css/bootstrap.css' %}" />
+	</head>
+	<body onload="myFunction()" style="margin:0;" class="bg-dark">
+		<div class="col-sm-3">
+			<img src="{% static 'map.png' %}" alt="">
+			</div>
+		<div class="container col-sm-9">
+			<h1 class="bg-dark text-white name">Covid-19 Tracker in {{ country }}</h1>
+			<h3 class="bg-dark text-white">Actualités Pour: {{ today|date:"D d M Y" }} {{ today|time:"H:i" }}</h3>
+			<button onclick="window.location.reload()" type="button" class="btn btn-info btn-lg btn-block">Cliquer ici pour actualiser les données</button> <br>
+			<div id="loader"></div>
+			<div style="display:none;" id="myDiv" class="container animate-bottom colored">
+				
+<div class="row">
+	<div class="col-md-4">
+		<div class="col-md">
+			<div class="card text-center text-success bg-dark border border-success mb-3" id="total-orders">
+			  	
+			  	<div class="card-body">
+			  		<h5 class="card-title data">Noveau Rétablis :</h5>
+			    	<h3 class="card-title data">{{ newRecovered }}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="col-md">
+			<div class="card text-center text-success bg-dark border border-success mb-3" id="orders-delivered">
+			  	
+			  	<div class="card-body">
+			  		<h5 class="card-title data">Total Rétablis:</h5>
+			    	<h3 class="card-title data">{{ totalRecovered }}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="col-md">
+			<div class="card text-center text-warning bg-dark border border-warning mb-3" id="orders-pending">
+			  	
+			  	<div class="card-body">
+			  		<h5 class="card-title data">Nouveaux Cas Confirmés:</h5>
+			    	<h3 class="card-title data">{{ newConfirmed }}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="col-md">
+			<div class="card text-center text-warning bg-dark border border-warning mb-3" id="orders-pending">
+			  	
+			  	<div class="card-body">
+			  		<h5 class="card-title data">Total Des Cas Confirmés:</h5>
+			    	<h3 class="card-title data">{{ totalConfirmed }}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="col-md">
+			<div class="card text-center text-danger bg-dark border border-danger mb-3" id="orders-pending">
+			  	
+			  	<div class="card-body">
+			  		<h5 class="card-title data">Noveaux Décès:</h5>
+			    	<h3 class="card-title data">{{ newDeaths }}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="col-md">
+			<div class="card text-center text-danger bg-dark border border-danger mb-3" id="orders-pending">
+			  	
+			  	<div class="card-body">
+			  		<h5 class="card-title data">Décès Total:</h5>
+			    	<h3 class="card-title data">{{ totalDeaths }}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!-- 
+				<span class="data text-success">Noveau Rétablis :</span> <span class="data">{{ newRecovered }}</span> <br>
+				<span class="data text-success">Total Rétablis:</span><span class="data">{{ totalRecovered }}</span> <br>
+				<span class="data text-warning">Nouveaux Cas Confirmés: </span> <span class="data">{{ newConfirmed }}</span> <br>
+				<span class="data text-warning">Total Des Cas Confirmés: </span> <span class="data">{{ totalConfirmed }}</span> <br>
+				<span class="data text-danger">Noveaux Décès:</span> <span class="data">{{ newDeaths }}</span> <br>
+				<span class="data text-danger">Décès Total:</span> <span class="data">{{ totalDeaths }}</span> <br>
+ -->
+
+			</div>
+		</div>
+		<script src="{% static 'bs/css/bootstrap.min.js' %}"></script>
+		<script src="{% static 'bs/css/jquery-3.4.1.min.js' %}"></script>
+		<script>
+		var myVar;
+		function myFunction() {
+		myVar = setTimeout(showPage, 2000);
+		}
+		function showPage() {
+		document.getElementById("loader").style.display = "none";
+		document.getElementById("myDiv").style.display = "block";
+		}
+		</script>
+	</body>
+</html>
