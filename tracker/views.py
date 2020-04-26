@@ -7,7 +7,7 @@ def index(request):
 
 	r = requests.get(url).json()
 
-	tunisia = r['Countries'][226]
+	tunisia = r['Countries'][225]
 	print(type(tunisia['Date']))
 	today = timezone.now()
 	context = {
