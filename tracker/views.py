@@ -6,9 +6,14 @@ def index(request):
 	url  = 'https://api.covid19api.com/summary'
 
 	r = requests.get(url).json()
+	tunisia = {}
+	print(tunisia)
+	for i in range(220, 230):
+		if r['Countries'][i]['Country'] == 'Tunisia': 
 
-	tunisia = r['Countries'][225]
-	print(type(tunisia['Date']))
+			tunisia = r['Countries'][i]
+
+	print(tunisia)
 	today = timezone.now()
 	context = {
 		'today':today,
