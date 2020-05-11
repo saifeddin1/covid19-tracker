@@ -7,13 +7,11 @@ def index(request):
 
 	r = requests.get(url).json()
 	tunisia = {}
-	print(tunisia)
-	for i in range(220, 230):
-		if r['Countries'][i]['Country'] == 'Tunisia': 
 
-			tunisia = r['Countries'][i]
+	for i in r['Countries']:
+		if i['Country'] == 'Tunisia': 
+			tunisia = i
 
-	print(tunisia)
 	today = timezone.now()
 	context = {
 		'today':today,
