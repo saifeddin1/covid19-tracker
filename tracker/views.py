@@ -8,10 +8,11 @@ def index(request):
 	r = requests.get(url).json()
 	tunisia = {}
 	print(tunisia)
-	for i in range(220, 230):
+	for i in range(300):
 		if r['Countries'][i]['Country'] == 'Tunisia': 
 
 			tunisia = r['Countries'][i]
+			
 
 	print(tunisia)
 	today = timezone.now()
