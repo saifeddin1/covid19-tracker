@@ -8,9 +8,10 @@ def index(request):
 	r = requests.get(url).json()
 	tunisia = {}
 
-	for i in r['Countries']:
+    	for i in r['Countries']:
 		if i['Country'] == 'Tunisia': 
 			tunisia = i
+
 
 	today = timezone.now()
 	context = {
